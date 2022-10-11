@@ -11,8 +11,6 @@ console.log(createPictureMarkup());
 pictursContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
 
-pictursContainer.addEventListener('click',onPicturesContainerClick);
-
 
 function createPictureMarkup() {
     return galleryItems.map(({ preview, original, description }) => {
@@ -26,20 +24,14 @@ function createPictureMarkup() {
                 />
             </a>
         </div>`;
-    })
-        
+    })  
         .join('');
 };
 
-function onPicturesContainerClick(event) {
-    event.preventDefault();
+const lightbox = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
 
-    if (!event.target.classList.contains('gallery__image')) {
-        return;
-    };
 
-    const lightbox = new SimpleLightbox('.gallery a', { captionsData: "alt", captionDelay: 250 });
     
-    console.log(lightbox);
     
-};
+ 
+

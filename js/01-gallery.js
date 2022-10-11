@@ -3,17 +3,19 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const pictursContainer = document.querySelector('.gallery')
-const galleryMarkup = createPictureMarkup()
 
-console.log(createPictureMarkup());
-pictursContainer.insertAdjacentHTML('beforeend', galleryMarkup);
+const openPictursContainer = document.querySelector('.gallery')
 
+const galleryMarkup = createPictureMarkup(galleryItems)
 
-pictursContainer.addEventListener('click',onPicturesContainerClick);
+openPictursContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
 
-function createPictureMarkup() {
+openPictursContainer.addEventListener('click', onPicturesContainerClick);
+
+
+
+function createPictureMarkup(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
         <div class="gallery__item">
@@ -42,11 +44,12 @@ function onPicturesContainerClick(event) {
     instance.show()
     console.log(instance)
 
-    pictursContainer.addEventListener('keydown', (event) => {
+    window.addEventListener('keydown', (event) => {
         if (event.code === 'Escape') {
             instance.close()
         } 
-     })
+    })
+    console.log(openPictursContainer)
    
 };
 
