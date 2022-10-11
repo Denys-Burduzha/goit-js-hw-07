@@ -11,7 +11,6 @@ console.log(createPictureMarkup());
 pictursContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
 
-
 function createPictureMarkup() {
     return galleryItems.map(({ preview, original, description }) => {
         return `

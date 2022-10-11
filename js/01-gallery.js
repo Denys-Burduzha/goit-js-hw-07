@@ -47,9 +47,10 @@ function onPicturesContainerClick(event) {
     window.addEventListener('keydown', (event) => {
         if (event.code === 'Escape') {
             instance.close()
-        } 
-    })
-    console.log(openPictursContainer)
+        }
+    }, { "once": true }); 
+    console.log(openPictursContainer);
+     console.log(window.addEventListener)
    
 };
 
