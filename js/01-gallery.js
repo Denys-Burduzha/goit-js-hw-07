@@ -44,14 +44,13 @@ function onPicturesContainerClick(event) {
         }
     });
 
-    instance.show()
+    instance.show();
     
     window.addEventListener('keydown', closeEscape);
 
     function closeEscape(event) {
         if (event.code === 'Escape') {
             instance.close()
-    
             console.log(event.code);
         };
     };
