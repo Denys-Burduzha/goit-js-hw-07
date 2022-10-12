@@ -1,6 +1,5 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
 console.log(galleryItems);
 
 
@@ -9,8 +8,6 @@ const openPictursContainer = document.querySelector('.gallery')
 const galleryMarkup = createPictureMarkup(galleryItems)
 
 openPictursContainer.insertAdjacentHTML('beforeend', galleryMarkup);
-
-
 openPictursContainer.addEventListener('click', onPicturesContainerClick);
 
 
@@ -40,22 +37,22 @@ function onPicturesContainerClick(event) {
         return;
     };
     
-    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`)
-    instance.show()
-    console.log(instance)
+    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`,
+        {
+        onClose: (instance) => {
+            window.removeEventListener('keydown', closeEscape);
+        }
+    });
 
-    window.addEventListener('keydown', (event) => {
+    instance.show()
+    
+    window.addEventListener('keydown', closeEscape);
+
+    function closeEscape(event) {
         if (event.code === 'Escape') {
             instance.close()
-        }
-    }, { "once": true }); 
-    console.log(openPictursContainer);
-     console.log(window.addEventListener)
-   
+    
+            console.log(event.code);
+        };
+    };
 };
-
-
-
-
-
-
